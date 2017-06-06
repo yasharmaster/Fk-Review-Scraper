@@ -23,7 +23,7 @@ with closing(Firefox()) as browser:
 
 	file = open("review.txt", "w")
 
-	for count in range(1, 30):
+	for count in range(1, 10):
 		nav_btns = browser.find_elements_by_class_name('_33m_Yg')
 
 		button = ""
@@ -60,13 +60,13 @@ with closing(Firefox()) as browser:
 			content.encode('ascii','ignore')
 			content = content[15:-7]
 
-			votes = tag.find_all("div", class_="_2dnKEZ")
+			votes = tag.find_all("span", class_="_1_BQL8")
 			upvotes = int(votes[0].string)
 			downvotes = int(votes[1].string)
 
-			file.write("%s\n" % title )
-			file.write(str(upvotes) + "\t" + str(downvotes))
-			file.write("\n%s\n\n\n" % content )
+			file.write("Review Title : %s\n\n" % title )
+			file.write("Upvotes : " + str(upvotes) + "\n\nDownvotes : " + str(downvotes) + "\n\n")
+			file.write("Review Content :\n%s\n\n\n\n" % content )
 
 	file.close()
 
