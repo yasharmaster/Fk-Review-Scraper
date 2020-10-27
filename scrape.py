@@ -12,12 +12,28 @@ import urllib2
 import re
 from bs4 import BeautifulSoup
 import unicodedata
+from selenium.webdriver.firefox.options import Options
+
+# adding options to browser
+opt = Options()
+opt.add_argument("--disable-infobars")
+opt.add_argument("start-maximized")
+opt.add_argument('--no-sandbox')
+
+# To manage permissions uncomment these lines.
+# opt.add_experimental_option("prefs", {
+#                                         "profile.default_content_setting_values.media_stream_mic": 1,
+#                                         "profile.default_content_setting_values.media_stream_camera": 1,
+#                                         "profile.default_content_setting_values.geolocation": 2,
+#                                         "profile.default_content_setting_values.notifications": 2,
+# })
+# opt.add_argument("--disable-extensions")
 
 def remove_non_ascii_1(text):
 
     return ''.join([i if ord(i) < 128 else ' ' for i in text])
 
-with closing(Firefox()) as browser:
+with closing(Firefox(options=opt)) as browser:
 	site = "https://www.flipkart.com/asus-zenfone-2-laser-ze550kl-black-16-gb/product-reviews/itme9j58yzyzqzgc?pid=MOBE9J587QGMXBB7"
 	browser.get(site)
 
