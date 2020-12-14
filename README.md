@@ -3,9 +3,6 @@ Python script for scraping product reviews
 
 ## NOTE: This repository is not maintained!
 
-## Demo
-![Fk Review Scaraper Demo](/demo.gif?raw=true "Fk Review Scaraper Demo")
-
 ## Requirements
 * Beautiful Soup
 * Selenium WebDriver
